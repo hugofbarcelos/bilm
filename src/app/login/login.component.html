@@ -1,18 +1,17 @@
 <div class="login-container">
-    <mat-toolbar>
-        <span>LOGIN</span>
-    </mat-toolbar>
-    <form action="">
+    <h1>LOGIN</h1>
+    <form [formGroup]="form">
         <mat-form-field class="example-full-width">
             <mat-label>Email/Usernamer</mat-label>
-            <input name="email" [(ngModel)]="userCredentials.email" matInput placeholder="Ex. dog@gmail.com">
-            @if (emailFormControl.hasError('required')) {
-            <mat-error>Email is <strong>required</strong></mat-error>
-            }
+            <input name="email" matInput formControlName="email" placeholder="Ex. dog@gmail.com">
+                <mat-error *ngIf="isInvalid('email')">Email required</mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
-            <input name="password" [(ngModel)]="userCredentials.password" matInput placeholder="Ex. dog19%31">
+            <input name="password" formControlName="password" matInput placeholder="Ex. dog19%31">
+            <ng-container *ngIf="isInvalid('password')">
+                <mat-error>Password required</mat-error>
+            </ng-container>
         </mat-form-field>
         <button mat-button color="primary" (click)="onSubmit()">SIGN IN</button>
     </form>

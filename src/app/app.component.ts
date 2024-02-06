@@ -9,11 +9,9 @@ import { LoginComponent } from './login/login.component';
     RouterOutlet,
     LoginComponent
   ],
-  template: `
-        <login></login>
-  `,
+  templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
-  title = 'bilm';
+
 }
